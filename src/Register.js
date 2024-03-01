@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Register = () => {
     const [fname,setFname] = useState();
@@ -13,7 +14,6 @@ const Register = () => {
         Email:email,
         password:paswd
       }
-      console.log(NewUser);
      fetch("http://localhost:5000/CreateNewuser",{
       method:'post',
       headers:{'Content-Type':'application/json'},
@@ -38,7 +38,7 @@ const Register = () => {
           <h2>Register Here</h2>
        <form>
           <label>Name:</label><br/>
-          <input type='text'  value={fname} onChange={(event)=>setFname(event.target.value)}/> <br/>
+          <input type='text'  value={fname} onChange={(event)=>setFname(event.target.value)} /> <br/>
           <label>Email:</label> <br/>
           <input type='email'  value={email} onChange={(event)=>setEmail(event.target.value)}/> <br/>
           <label>Password:</label> <br/>
