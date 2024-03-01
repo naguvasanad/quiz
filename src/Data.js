@@ -65,22 +65,35 @@ const Data = () => {
   
     return (
       <>
-      
+       <div>
+        <h2>Let's Start</h2>
+       </div>
       {questions.map((item,key)=>{
       return(
   <div key={key}>
-    <p>{item.qnum}</p>
-    <p >{item.question}</p>
-    <input type='radio'  name={item.qnum} value={item.opt1} onChange={()=>handleChange(item,item.opt1)}/>
+    <p >{item.qnum}.{item.question}</p>
+    <input type='radio'  name={item.qnum} value={item.opt1}
+     onChange={()=>handleChange(item,item.opt1)}
+     className="form-check-input"
+     />
     <label>{item.opt1}</label>
     <br/>
-    <input type='radio' name={item.qnum} value={item.opt2} onChange={()=>handleChange(item,item.opt2)}/>
+    <input type='radio' name={item.qnum} value={item.opt2}
+     onChange={()=>handleChange(item,item.opt2)}
+     className="form-check-input"
+     />
     <label>{item.opt2}</label> <br/>
-    <input type='radio' name={item.qnum} value={item.opt3} onChange={()=>handleChange(item,item.opt3)}/>
+    <input type='radio' name={item.qnum} value={item.opt3} 
+    onChange={()=>handleChange(item,item.opt3)}
+    className="form-check-input"
+    />
     <label>{item.opt3}</label><br/>
-    <input type='radio' name={item.qnum} value={item.opt4} onChange={()=>handleChange(item,item.opt4)}/>
+    <input type='radio' name={item.qnum} value={item.opt4}
+     onChange={()=>handleChange(item,item.opt4)}
+     className="form-check-input"
+     />
     <label>{item.opt4}</label> <br/><br/>
-    <button onClick={(e)=> handleSubmit(e,item)}>Submit</button>
+    <button onClick={(e)=> handleSubmit(e,item)} className='btn btn-success'>Submit</button>
     <hr/>
   
     </div>
