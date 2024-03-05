@@ -2,14 +2,14 @@ import React from 'react'
 import { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./Register.css"
-import { json } from 'react-router-dom';
+
 
 const Register = () => {
     const [fname,setFname] = useState();
     const [email,setEmail] = useState();
     const [paswd,setPaswd] = useState();
     const [success,setSuccess] = useState(false);
-  
+     
     const handleLogin = (e) =>{
       e.preventDefault();
       var NewUser ={
@@ -27,6 +27,7 @@ const Register = () => {
      .then(json=>{
       if(json>0){
         setSuccess(true);
+        alert("success");
       }else{
        setSuccess(false);
         
@@ -38,7 +39,7 @@ const Register = () => {
 
     const handleOnChange = (event) =>{
       event.preventDefault();
-      // setFname(event.target.value);
+      setFname(event.target.value);
       fetch("http://localhost:5000/checkuser",{
       method:'post',
       headers:{'Content-Type':'application/json'},
@@ -63,7 +64,7 @@ const Register = () => {
       <form>
        <h2>Register Here</h2>
           <label>Name:</label><br/>
-          <input type='text'   value={fname} onChange={(event)=>handleOnChange(event)} className='form-control'/> <br/>
+          <input type='text'   onChange={(event)=>handleOnChange(event)} className='form-control'/> <br/>
          
          <p>{success?<span style={{color:'green'}}>User is available</span>:<span style={{color:'red'}}>This user is not available</span>}</p>
          
