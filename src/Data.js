@@ -1,22 +1,33 @@
 import React from 'react'
 import { useEffect, useState } from 'react';
+import './Data.css'
+
 
 const Data = () => {
     const [questions,setQuestions]= useState([]);
     const[selectedopt,setSelectedOpt] = useState([]);
-    
+    const [user,setUser] = useState({});
   
   useEffect(()=>{
+    const loggedInUser = localStorage.getItem("loggedInUser");
+    if (loggedInUser) {
+      
+       const foundUser = JSON.parse(loggedInUser);
+       console.log(foundUser);
+      setUser(foundUser);
+    }
     fetch("http://localhost:5000/questions")
     .then(response=> response.json())
     .then(json=>{
      setQuestions(json);
   
     }).catch(err=>console.log(err));
+
   },[])
   
   const handleChange = (item,opt)=>{
     const answer= {
+      userId: JSON.parse( localStorage.getItem("loggedInUser")).userid,
       qnum: item.qnum,
       answer: opt,
       isItForUpdate:false
@@ -30,11 +41,7 @@ const Data = () => {
   
    }
   else{
-  //  var dupsel=selectedopt;
-  //   dupsel[index].answer=opt;  
-  //   //setSelectedOpt([]);
-  //   setSelectedOpt(dupsel);  
-  setSelectedOpt(selectedopt.map(obj=>{
+   setSelectedOpt(selectedopt.map(obj=>{
     if(obj.qnum===item.qnum)
     {
       var updatedItem = {...obj,answer:opt,isItForUpdate:true};
@@ -62,10 +69,20 @@ const Data = () => {
     .catch(err=>console.log(err));
   }
   
+  const handleLogOut = () =>{
+    window.location.href = "/Login"
+  }
   
     return (
       <>
        <div>
+      <button onClick={handleLogOut}className='btn btn-danger' id='lgt_btn'>Logout</button>
+      </div>
+      <div className='loggedin_user'>     
+     <p>{user.Username}</p> 
+      </div>
+     
+            <div>
         <h2>Let's Start</h2>
        </div>
       {questions.map((item,key)=>{

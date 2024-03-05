@@ -4,6 +4,7 @@ import React, { useState } from 'react'
 const Login = () => {
    const [fname,setFname] = useState();
     const [paswd,setPaswd] = useState();
+   
 
   const handleLogin = (e) =>{
     e.preventDefault();
@@ -19,11 +20,15 @@ const Login = () => {
     })
    }).then(response=>response.json())
    .then(json=>{
-    if(json>0){
-    window.location.href= "/Data"
-    }else{
-      alert('Please Register');
-    }
+    
+    // var user = {
+    //   "userid" : json.userid,
+    //   "username": json.Username
+    // }
+    console.log(json);
+    localStorage.clear();
+    localStorage.setItem("loggedInUser",JSON.stringify(json));
+   window.location.href = '/Data';
    })
    .catch(err=> alert('Failed'+err)); 
 
