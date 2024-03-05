@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Navigate } from 'react-router-dom';
 
 
 const Login = () => {
@@ -30,7 +31,8 @@ const Login = () => {
 
   }
 
-  const handleRegister = () =>{
+  const handleRegister = (e) =>{
+    e.preventDefault();
     window.location.href = "/Register";
   }
 
@@ -44,7 +46,7 @@ const Login = () => {
         <label>Password:</label> <br/>
         <input type='password' value={paswd} onChange={(event)=>setPaswd(event.target.value)} className='form-control'/> <br/>
         <button onClick={handleLogin} className='btn btn-info' id='btn_login'>Login</button> &nbsp; &nbsp;
-        <button className='btn btn-success' onClick={handleRegister}>Register</button>
+        <button className='btn btn-success' onClick={(e)=>handleRegister(e)}>Register</button>
      </form>
     </div>
     </div> 
