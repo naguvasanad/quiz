@@ -1,0 +1,44 @@
+/* *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
+}
+
+ 
+
+.content{
+    
+    border-radius: 5px; 
+    
+    padding: 20px;
+    background-color: wheat;
+    box-shadow: 5px 5px;
+}
+
+
+
+
+
+label{
+    color: blueviolet;
+}
+
+input:focus{
+    display: none;
+}
+
+
+ */
+ .Register_content{
+    display: flex;
+   height: 100vh;
+    justify-content: center;
+    align-items: center;
+} 
