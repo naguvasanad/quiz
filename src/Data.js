@@ -70,7 +70,7 @@ const Data = () => {
   }
   
   const handleLogOut = () =>{
-    window.location.href = "/Login"
+    window.location.href = "/Login";
   }
   
     return (
