@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 const Login = () => {
@@ -20,32 +21,33 @@ const Login = () => {
     })
    }).then(response=>response.json())
    .then(json=>{
-    
-    // var user = {
-    //   "userid" : json.userid,
-    //   "username": json.Username
-    // }
     console.log(json);
     localStorage.clear();
     localStorage.setItem("loggedInUser",JSON.stringify(json));
    window.location.href = '/Data';
    })
-   .catch(err=> alert('Failed'+err)); 
+   .catch(err=> alert(' User not found Please Register')); 
 
   }
 
+  const handleRegister = () =>{
+    window.location.href = "/Register";
+  }
 
   return (
-    <div>
-        <h2>Login</h2>
+    <div className='Register_content'>
+     <div className='content'> 
      <form>
+     <h2>Login</h2>
         <label>Name:</label><br/>
-        <input type='text'  value={fname} onChange={(event)=>setFname(event.target.value)}/> <br/>
+        <input type='text'  value={fname} onChange={(event)=>setFname(event.target.value)} className='form-control'/> <br/>
         <label>Password:</label> <br/>
-        <input type='password' value={paswd} onChange={(event)=>setPaswd(event.target.value)}/> <br/>
-        <button onClick={handleLogin}>Login</button>
+        <input type='password' value={paswd} onChange={(event)=>setPaswd(event.target.value)} className='form-control'/> <br/>
+        <button onClick={handleLogin} className='btn btn-info' id='btn_login'>Login</button> &nbsp; &nbsp;
+        <button className='btn btn-success' onClick={handleRegister}>Register</button>
      </form>
     </div>
+    </div> 
   )
 
 }
