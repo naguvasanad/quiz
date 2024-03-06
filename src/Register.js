@@ -56,6 +56,11 @@ const Register = () => {
      })
     }
 
+    const handleBack = (e) =>{
+     e.preventDefault();
+     window.location.href = "/";
+    }
+
 
 
     return (
@@ -64,15 +69,26 @@ const Register = () => {
       <form>
        <h2>Register Here</h2>
           <label>Name:</label><br/>
-          <input type='text'   onChange={(event)=>handleOnChange(event)} className='form-control'/> <br/>
+          <input type='text'  
+           onChange={(event)=>handleOnChange(event)} 
+           className='form-control'/> <br/>
          
          <p>{success?<span style={{color:'green'}}>User is available</span>:<span style={{color:'red'}}>This user is not available</span>}</p>
          
           <label>Email:</label> <br/>
-          <input type='email'  value={email} onChange={(event)=>setEmail(event.target.value)} className='form-control'/> <br/>
+          <input type='email'  
+          value={email} 
+          onChange={(event)=>setEmail(event.target.value)} 
+          className='form-control'/> <br/>
+
           <label>Password:</label> <br/>
-          <input type='password' value={paswd} onChange={(event)=>setPaswd(event.target.value)} className='form-control'/> <br/>
+          <input type='password'
+           value={paswd} 
+           onChange={(event)=>setPaswd(event.target.value)}
+            className='form-control'/> <br/>
          {success? <button onClick={handleLogin} className='btn btn-success' id='btn_reg'>Register</button>: <button onClick={handleLogin} className='btn btn-success' id='btn_reg' disabled>Register</button>}
+         &nbsp; &nbsp;
+         <button onClick={(e)=>handleBack(e)} className='btn btn-primary'>Back</button>
           </form>
        </div>   
       </div>

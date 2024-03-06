@@ -25,7 +25,7 @@ const Login = () => {
     console.log(json);
     localStorage.clear();
     localStorage.setItem("loggedInUser",JSON.stringify(json));
-   window.location.href = '/Data';
+   window.location.href = '/Home';
    })
    .catch(err=> alert(' User not found Please Register')); 
 
@@ -42,9 +42,19 @@ const Login = () => {
      <form>
      <h2>Login</h2>
         <label>Name:</label><br/>
-        <input type='text'  value={fname} onChange={(event)=>setFname(event.target.value)} className='form-control'/> <br/>
+        <input type='text' 
+          value={fname}
+          onChange={(event)=>setFname(event.target.value)}
+           className='form-control'
+           placeholder='Name'
+           /> <br/>
         <label>Password:</label> <br/>
-        <input type='password' value={paswd} onChange={(event)=>setPaswd(event.target.value)} className='form-control'/> <br/>
+        <input type='password' 
+        value={paswd}
+         onChange={(event)=>setPaswd(event.target.value)} 
+         className='form-control'
+         placeholder='password'
+         /> <br/>
         <button onClick={handleLogin} className='btn btn-info' id='btn_login'>Login</button> &nbsp; &nbsp;
         <button className='btn btn-success' onClick={(e)=>handleRegister(e)}>Register</button>
      </form>
