@@ -2,6 +2,7 @@ import {  useState } from "react"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { IoMdClose } from "react-icons/io";
 import { FaCheck } from "react-icons/fa6";
+import Header from "./Header";
 
 
 
@@ -26,10 +27,18 @@ const handleView = (e)=>{
     .catch(err=>alert(err))
 }
 
+const handleBack = (e)=>{
+  e.preventDefault();
+  window.location.href = "/Home"
+}
+
   return (
     <>
     <div>
-      <button onClick={(e)=>handleView(e)}>View</button>
+      <button onClick={(e)=>handleView(e)} className="btn btn-info">View Result</button>
+      <button onClick={(e)=>handleBack(e)}  className="btn btn-danger">Back</button>
+       &nbsp;&nbsp;
+     <p style={{float:"right"}}> <Header  /> </p>
       
       <table className="table table-bordered">
                 <tr>
